@@ -1,0 +1,267 @@
+// ===============================================
+// CYBER PORTFOLIO - TEMA GLOBAL
+// ===============================================
+
+@use 'variables' as *;
+@use 'animations' as *;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Reset y configuración base
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-system;
+  background: $bg-main;
+  color: $text-main;
+  overflow: hidden;
+  height: 100vh;
+  position: relative;
+
+  @media (max-width: 768px) {
+    overflow-y: auto;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  // Efecto de scanlines sutil en todo el sitio
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 240, 255, 0.03) 0px,
+      transparent 1px,
+      transparent 2px,
+      rgba(0, 240, 255, 0.03) 3px
+    );
+    pointer-events: none;
+    z-index: 9999;
+    animation: scanline 8s linear infinite;
+  }
+
+  // Gradiente de fondo futurista
+  &::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(122, 0, 255, 0.1) 0%,
+      transparent 50%
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+// Scrollbar personalizado estilo cyber
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bg-panel-solid;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, $neon-blue, $neon-purple);
+  border-radius: 5px;
+
+  &:hover {
+    box-shadow: $glow-blue;
+  }
+}
+
+// Selección de texto personalizada
+::selection {
+  background: $neon-blue;
+  color: $bg-main;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: $neon-blue;
+  color: $bg-main;
+  text-shadow: none;
+}
+
+// Tipografía base
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3vw, 2rem);
+}
+
+p {
+  line-height: 1.6;
+  color: $text-dim;
+}
+
+code, pre {
+  font-family: $font-mono;
+}
+
+// Componentes reutilizables base
+.neon-text {
+  color: $neon-blue;
+  text-shadow: $glow-blue;
+
+  &.purple {
+    color: $neon-purple;
+    text-shadow: $glow-purple;
+  }
+
+  &.green {
+    color: $neon-green;
+    text-shadow: $glow-green;
+  }
+
+  &.pink {
+    color: $neon-pink;
+    text-shadow: $glow-pink;
+  }
+}
+
+.panel {
+  background: $bg-panel;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba($neon-blue, 0.2);
+  border-radius: $border-radius;
+  padding: $panel-padding;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, $neon-blue, transparent);
+    opacity: 0.5;
+  }
+
+  &:hover {
+    border-color: rgba($neon-blue, 0.4);
+    box-shadow: 0 0 20px rgba($neon-blue, 0.1);
+  }
+}
+
+.terminal-line {
+  font-family: $font-mono;
+  color: $neon-green;
+  font-size: 0.9rem;
+
+  &::before {
+    content: '> ';
+    color: $neon-blue;
+  }
+}
+
+.system-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba($neon-blue, 0.1);
+  border: 1px solid rgba($neon-blue, 0.3);
+  border-radius: $border-radius;
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $neon-blue;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: rgba($neon-blue, 0.2);
+    box-shadow: $glow-blue;
+    transform: translateY(-2px);
+  }
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba($neon-blue, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba($neon-blue, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+// Efectos de carga
+.loading-bar {
+  height: 2px;
+  background: linear-gradient(90deg, $neon-blue, $neon-purple);
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    animation: loading-shine 2s infinite;
+  }
+}
+
+@keyframes loading-shine {
+  to {
+    left: 100%;
+  }
+}
+
+// Utilidades de espaciado
+.container-cyber {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+    max-width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 0.75rem;
+  }
+}
+
+.section-padding {
+  padding: 6rem 0;
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+}

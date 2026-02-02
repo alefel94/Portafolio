@@ -1,0 +1,40 @@
+// ===============================================
+// CYBER PORTFOLIO - VARIABLES FUTURISTAS
+// ===============================================
+
+// Colores base
+$bg-main: #05070d;
+$bg-panel: rgba(10, 15, 30, 0.6);
+$bg-panel-solid: #0a0f1e;
+
+// Colores neón
+$neon-blue: #00f0ff;
+$neon-purple: #7a00ff;
+$neon-green: #00ff9c;
+$neon-pink: #ff00e5;
+$neon-orange: #ff6600;
+
+// Colores de texto
+$text-main: #d9faff;
+$text-dim: #7a8fa5;
+$text-muted: #4a5a6a;
+
+// Sombras de brillo neón
+$glow-blue: 0 0 10px $neon-blue, 0 0 20px $neon-blue, 0 0 30px $neon-blue;
+$glow-purple: 0 0 10px $neon-purple, 0 0 20px $neon-purple, 0 0 30px $neon-purple;
+$glow-green: 0 0 10px $neon-green, 0 0 20px $neon-green, 0 0 30px $neon-green;
+$glow-pink: 0 0 10px $neon-pink, 0 0 20px $neon-pink, 0 0 30px $neon-pink;
+
+// Tipografía
+$font-mono: 'Fira Code', 'Consolas', 'Monaco', monospace;
+$font-system: 'Inter', system-ui, sans-serif;
+
+// Grid y espaciado
+$grid-gap: 1rem;
+$panel-padding: 1.5rem;
+$border-radius: 0.25rem;
+
+// Transiciones
+$transition-fast: 0.2s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;

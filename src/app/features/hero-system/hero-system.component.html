@@ -1,0 +1,124 @@
+<section class="hero-system">
+  <div class="container-cyber">
+    <div class="hero-grid">
+      <!-- Left Side: System Information -->
+      <div class="hero-left">
+        <!-- System Path -->
+        <div class="system-path animate-fade-in-up">
+          C:\USUARIOS\INGENIERO\FULLSTACK > <span class="highlight">INICIALIZAR_PORTAFOLIO</span>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="hero-title animate-fade-in-up animation-delay-1">
+          FULLSTACK<span class="extension">.EXE</span>
+        </h1>
+
+        <!-- System Status Panel -->
+        <div class="status-box animate-fade-in-up animation-delay-2">
+          <div class="status-line">
+            <span class="status-label">[ESTADO DEL SISTEMA:</span>
+            <span class="status-value online">{{ systemStatus.status }}</span>
+            <span class="status-label">]</span>
+          </div>
+          <div class="status-line">
+            <span class="status-label">[ROL:</span>
+            <span class="status-value">{{ systemStatus.role }}</span>
+            <span class="status-label">]</span>
+          </div>
+          <div class="status-line">
+            <span class="status-label">[UBICACIÓN:</span>
+            <span class="status-value typing">{{ systemStatus.location }}</span>
+            <span class="status-label">]</span>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <p class="hero-description animate-fade-in-up animation-delay-3">
+          {{ typedDescription }}<span class="cursor">|</span>
+        </p>
+
+        <!-- Tech Badges -->
+        <div class="tech-badges animate-fade-in-up animation-delay-4">
+          <app-system-badge *ngFor="let tech of mainSkills" [text]="tech.name"
+            [color]="tech.color"></app-system-badge>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="hero-cta animate-fade-in-up animation-delay-5">
+          <app-neon-button text="EXPLORAR_SISTEMA_DE_ARCHIVOS" variant="primary" [showArrow]="true"
+            (clicked)="onExploreClick()"></app-neon-button>
+        </div>
+      </div>
+
+      <!-- Right Side: Code Panel -->
+      <div class="hero-right animate-fade-in-up animation-delay-2">
+        <app-panel-box title="HolaMundo.tsx" status="online">
+          <pre class="code-display"><code><span class="line-number">1</span>  <span class="keyword">importar</span> React, &#123; useState, useEffect &#125; <span class="keyword">de</span> <span class="string">'react'</span>;
+        <span class="line-number">2</span>
+        <span class="line-number">3</span>  <span class="keyword">const</span> <span class="function">Portafolio</span> = () =&gt; &#123;
+        <span class="line-number">4</span>    <span class="keyword">const</span> [estado, setEstado] = <span class="function">useState</span>(<span class="string">'INICIALIZANDO'</span>);
+        <span class="line-number">5</span>
+        <span class="line-number">6</span>    <span class="function">useEffect</span>(() =&gt; &#123;
+        <span class="line-number">7</span>      <span class="comment">// Ejecutar diagnóstico al montar</span>
+        <span class="line-number">8</span>      <span class="function">ejecutarChequeoSistema</span>();
+        <span class="line-number">9</span>      <span class="function">setEstado</span>(<span class="string">'EN LÍNEA'</span>);
+        <span class="line-number">10</span>    &#125;, []);
+        <span class="line-number">11</span>
+        <span class="line-number">12</span>    <span class="keyword">retornar</span> (
+        <span class="line-number">13</span>      &lt;<span class="tag">ContenedorTerminal</span>&gt;
+        <span class="line-number">14</span>        &lt;<span class="tag">estado</span>&gt;&#123;estado&#125;&lt;/<span class="tag">estado</span>&gt;
+        <span class="line-number">15</span>        &lt;<span class="tag">EncabezadoGlitch</span>&gt;Hola Mundo&lt;/<span class="tag">EncabezadoGlitch</span>&gt;
+        <span class="line-number">16</span>        &lt;<span class="tag">ListaProyectos</span>
+        <span class="line-number">17</span>          datos=&#123;<span class="variable">proyectos</span>&#125;
+        <span class="line-number">18</span>          interactivo=&#123;<span class="variable">true</span>&#125;
+        <span class="line-number">19</span>          /&gt;
+        <span class="line-number">20</span>      &lt;/<span class="tag">ContenedorTerminal</span>&gt;
+        <span class="line-number">21</span>    );
+        <span class="line-number">22</span>  &#125;;
+        <span class="line-number">23</span>
+        <span class="line-number">24</span>  <span class="keyword">exportar por defecto</span> Portafolio;</code></pre>
+                </app-panel-box>
+
+        <!-- System Metrics -->
+        <div class="system-metrics">
+          <div class="metric-bar">
+            <div class="metric-label">
+              <span>CARGA_CPU</span>
+              <span class="metric-value">32%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 32%"></div>
+            </div>
+          </div>
+
+          <div class="metric-bar">
+            <div class="metric-label">
+              <span>USO_MEMORIA</span>
+              <span class="metric-value">64%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill purple" style="width: 64%"></div>
+            </div>
+          </div>
+
+          <div class="metric-item">
+            <span class="metric-label-inline">LATENCIA</span>
+            <span class="metric-value-inline green">12MS</span>
+            <span class="metric-status">OPTIMIZADO</span>
+          </div>
+
+          <div class="metric-item">
+            <span class="metric-label-inline">INTERFAZ_RED</span>
+            <span class="metric-value-inline">TOKIO_JP</span>
+            <span class="metric-status">//</span>
+            <span class="metric-value-inline">192.168.0.24</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Animated Grid Background -->
+  <div class="grid-background"></div>
+
+</section>

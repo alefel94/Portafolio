@@ -1,0 +1,897 @@
+@import '../../../styles/variables';
+
+:host {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+// Override body overflow when this component is active
+:host-context(body) {
+  body {
+    overflow-y: auto !important;
+    height: auto !important;
+  }
+}
+
+.project-filesystem {
+  position: relative;
+  min-height: 100vh;
+  height: auto;
+  background: $bg-main;
+  color: $text-main;
+  padding: 2rem 0;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    padding: 1rem 0;
+  }
+}
+
+// ===============================================
+// TERMINAL HEADER
+// ===============================================
+.terminal-header {
+  font-family: $font-mono;
+  font-size: 0.875rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba($neon-blue, 0.2);
+
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .path {
+    color: $text-dim;
+  }
+
+  .command {
+    color: $neon-green;
+  }
+}
+
+// ===============================================
+// MAIN GRID LAYOUT
+// ===============================================
+.main-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr 360px;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 100%;
+
+  @media (max-width: 1400px) {
+    grid-template-columns: 280px 1fr 320px;
+    gap: 1rem;
+  }
+
+  @media (max-width: 1024px) {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+  }
+}
+
+// ===============================================
+// PANEL BASE STYLES
+// ===============================================
+.panel {
+  background: rgba($bg-panel-solid, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba($neon-blue, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all $transition-normal;
+
+  &:hover {
+    border-color: rgba($neon-blue, 0.4);
+  }
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: rgba($neon-blue, 0.05);
+  border-bottom: 1px solid rgba($neon-blue, 0.2);
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  @media (max-width: 768px) {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.7rem;
+  }
+}
+
+.panel-title {
+  color: $neon-blue;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media (max-width: 768px) {
+    font-size: 0.65rem;
+  }
+}
+
+.panel-icon {
+  margin-right: 0.5rem;
+}
+
+.panel-dots {
+  display: flex;
+  gap: 0.25rem;
+
+  span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba($neon-blue, 0.4);
+
+    &:first-child {
+      background: rgba($neon-green, 0.6);
+    }
+  }
+}
+
+// ===============================================
+// LEFT SIDEBAR
+// ===============================================
+.sidebar-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+
+  @media (max-width: 1024px) {
+    order: 3;
+  }
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
+}
+
+// Identity Card
+.identity-card {
+  .identity-content {
+    padding: 1.5rem;
+  }
+
+  .avatar-container {
+    margin-bottom: 1.5rem;
+  }
+
+  .avatar-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, rgba($neon-blue, 0.1), rgba($neon-purple, 0.1));
+    border: 2px solid rgba($neon-blue, 0.3);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-mono;
+    font-size: 0.875rem;
+    color: $text-dim;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 80%;
+      height: 80%;
+      background: rgba($neon-blue, 0.1);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .avatar-text {
+    position: relative;
+    z-index: 1;
+  }
+
+  .identity-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .info-line {
+    .label {
+      font-family: $font-mono;
+      font-size: 0.7rem;
+      color: $text-muted;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  .value {
+    font-family: $font-mono;
+    font-size: 0.875rem;
+    color: $text-main;
+    margin-top: 0.25rem;
+    word-break: break-word;
+
+    @media (max-width: 768px) {
+      font-size: 0.8rem;
+    }
+
+    &.highlight {
+      color: $neon-blue;
+      font-weight: 600;
+    }
+
+    &.availability {
+      color: $neon-green;
+      text-shadow: 0 0 10px rgba($neon-green, 0.5);
+    }
+  }
+}
+
+// CV Download Button
+.cv-download-btn {
+  width: 100%;
+  padding: 1rem;
+  background: transparent;
+  border: 2px solid $neon-purple;
+  border-radius: 4px;
+  color: $neon-purple;
+  font-family: $font-mono;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all $transition-normal;
+
+  &:hover {
+    background: rgba($neon-purple, 0.1);
+    box-shadow: 0 0 20px rgba($neon-purple, 0.3);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// System Resources
+.system-resources {
+  .resources-content {
+    padding: 1rem;
+
+    @media (max-width: 768px) {
+      padding: 0.75rem;
+    }
+  }
+
+  .resource-item {
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .resource-label {
+    display: flex;
+    justify-content: space-between;
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    color: $text-dim;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+
+    @media (max-width: 768px) {
+      font-size: 0.65rem;
+    }
+  }
+
+  .percentage {
+    color: $neon-blue;
+    font-weight: 600;
+  }
+
+  .progress-bar {
+    height: 6px;
+    background: rgba($text-dim, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 1s ease;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 30px;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3));
+      animation: shimmer 2s infinite;
+    }
+
+    &.blue {
+      background: linear-gradient(90deg, $neon-blue, lighten($neon-blue, 15%));
+      box-shadow: 0 0 10px rgba($neon-blue, 0.5);
+    }
+
+    &.purple {
+      background: linear-gradient(90deg, $neon-purple, lighten($neon-purple, 15%));
+      box-shadow: 0 0 10px rgba($neon-purple, 0.5);
+    }
+
+    &.green {
+      background: linear-gradient(90deg, $neon-green, lighten($neon-green, 15%));
+      box-shadow: 0 0 10px rgba($neon-green, 0.5);
+    }
+  }
+
+  .system-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba($neon-blue, 0.2);
+  }
+
+  .stat {
+    font-family: $font-mono;
+    font-size: 0.7rem;
+  }
+
+  .stat-label {
+    color: $text-muted;
+  }
+
+  .stat-value {
+    color: $neon-blue;
+    margin-left: 0.25rem;
+
+    &.green {
+      color: $neon-green;
+    }
+  }
+}
+
+// ===============================================
+// MAIN CONTENT (CENTER)
+// ===============================================
+.main-content {
+  width: 100%;
+
+  @media (max-width: 1024px) {
+    order: 1;
+  }
+}
+
+.log-panel {
+  .panel-filters {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.7rem;
+    color: $text-muted;
+  }
+
+  .filter-text,
+  .filter-encoding {
+    color: $text-dim;
+  }
+}
+
+.log-content {
+  padding: 1.5rem;
+  max-height: none;
+  overflow-y: visible;
+
+  @media (max-width: 1024px) {
+    max-height: none;
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba($neon-blue, 0.05);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba($neon-blue, 0.3);
+    border-radius: 4px;
+
+    &:hover {
+      background: rgba($neon-blue, 0.5);
+    }
+  }
+}
+
+.log-entry {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba($neon-blue, 0.1);
+
+  &:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+.log-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba($text-dim, 0.3);
+  margin-top: 0.5rem;
+  flex-shrink: 0;
+  position: relative;
+
+  &.active {
+    background: $neon-blue;
+    box-shadow: 0 0 10px $neon-blue, 0 0 20px rgba($neon-blue, 0.5);
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      border: 2px solid $neon-blue;
+      border-radius: 50%;
+      animation: pulse-ring 2s infinite;
+    }
+  }
+
+  &.education {
+    background: $neon-purple;
+    box-shadow: 0 0 10px $neon-purple;
+  }
+}
+
+.log-body {
+  flex: 1;
+}
+
+.log-timestamp {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  color: $neon-green;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.log-title {
+  font-family: $font-mono;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: $text-main;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.02em;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+.log-company {
+  font-family: $font-mono;
+  font-size: 0.875rem;
+  color: $neon-blue;
+  margin-bottom: 0.75rem;
+}
+
+.log-description {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: $text-dim;
+  margin-bottom: 1rem;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  @media (max-width: 768px) {
+    gap: 0.375rem;
+  }
+}
+
+.tech-tag {
+  padding: 0.375rem 0.75rem;
+  background: rgba($neon-blue, 0.1);
+  border: 1px solid rgba($neon-blue, 0.3);
+  border-radius: 3px;
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  color: $neon-blue;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all $transition-fast;
+
+  @media (max-width: 768px) {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.65rem;
+  }
+
+  &:hover {
+    background: rgba($neon-blue, 0.2);
+    border-color: rgba($neon-blue, 0.5);
+    box-shadow: 0 0 10px rgba($neon-blue, 0.3);
+  }
+}
+
+// ===============================================
+// RIGHT SIDEBAR
+// ===============================================
+.sidebar-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+
+  @media (max-width: 1024px) {
+    order: 2;
+  }
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
+}
+
+// Status Header
+.status-header {
+  text-align: right;
+
+  @media (max-width: 1024px) {
+    text-align: left;
+  }
+}
+
+.status-title {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $text-dim;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+  }
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+
+  @media (max-width: 1024px) {
+    justify-content: flex-start;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+    flex-wrap: wrap;
+  }
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+
+  &.online {
+    background: $neon-green;
+    box-shadow: 0 0 10px $neon-green;
+    animation: pulse 2s infinite;
+  }
+}
+
+.status-text {
+  color: $neon-green;
+}
+
+.status-separator {
+  color: $text-dim;
+}
+
+// Network Panel
+.network-panel {
+  .network-content {
+    padding: 1rem;
+  }
+
+  .network-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba($neon-blue, 0.1);
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    gap: 0.5rem;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 0.25rem;
+      padding: 0.75rem 0;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .network-label {
+    color: $text-dim;
+  }
+
+  .network-value {
+    color: $neon-blue;
+    font-weight: 600;
+    word-break: break-all;
+
+    @media (max-width: 768px) {
+      font-size: 0.7rem;
+    }
+  }
+
+  .security-scan {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba($neon-blue, 0.2);
+  }
+
+  .scan-label {
+    display: block;
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    color: $text-dim;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  .scan-bars {
+    display: flex;
+    gap: 0.375rem;
+  }
+
+  .scan-bar {
+    flex: 1;
+    height: 20px;
+    background: rgba($neon-green, 0.1);
+    border: 1px solid rgba($neon-green, 0.2);
+    border-radius: 2px;
+    transition: all $transition-normal;
+
+    &.active {
+      background: $neon-green;
+      border-color: $neon-green;
+      box-shadow: 0 0 10px rgba($neon-green, 0.5);
+    }
+  }
+}
+
+// Packages Panel
+.packages-panel {
+  .packages-grid {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.375rem;
+      padding: 0.75rem;
+    }
+  }
+
+  .package-badge {
+    padding: 0.5rem;
+    background: rgba($neon-blue, 0.05);
+    border: 1px solid rgba($neon-blue, 0.2);
+    border-radius: 3px;
+    font-family: $font-mono;
+    font-size: 0.65rem;
+    color: $neon-blue;
+    text-align: center;
+    text-transform: uppercase;
+    transition: all $transition-fast;
+    cursor: default;
+
+    @media (max-width: 768px) {
+      padding: 0.375rem 0.25rem;
+      font-size: 0.6rem;
+    }
+
+    &:hover {
+      background: rgba($neon-blue, 0.1);
+      border-color: rgba($neon-blue, 0.4);
+      box-shadow: 0 0 10px rgba($neon-blue, 0.2);
+    }
+  }
+}
+
+// Contact Section
+.contact-section {
+  padding: 1.5rem;
+  background: rgba($neon-blue, 0.05);
+  border: 1px solid rgba($neon-blue, 0.2);
+  border-radius: 4px;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+}
+
+.contact-label {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $text-dim;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+.contact-btn {
+  width: 100%;
+  padding: 1rem;
+  background: $neon-blue;
+  border: none;
+  border-radius: 4px;
+  color: $bg-main;
+  font-family: $font-mono;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all $transition-normal;
+  box-shadow: 0 0 20px rgba($neon-blue, 0.4);
+
+  @media (max-width: 768px) {
+    padding: 0.875rem;
+    font-size: 0.8rem;
+  }
+
+  &:hover {
+    background: lighten($neon-blue, 10%);
+    box-shadow: 0 0 30px rgba($neon-blue, 0.6);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// ===============================================
+// FOOTER
+// ===============================================
+.terminal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba($neon-blue, 0.2);
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  color: $text-muted;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    font-size: 0.65rem;
+  }
+}
+
+.footer-left {
+  @media (max-width: 768px) {
+    word-break: break-word;
+  }
+}
+
+.footer-right {
+  display: flex;
+  gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.footer-link {
+  color: $neon-blue;
+  text-decoration: none;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: lighten($neon-blue, 15%);
+    text-shadow: 0 0 10px rgba($neon-blue, 0.5);
+  }
+}
+
+// ===============================================
+// ANIMATIONS
+// ===============================================
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+}
