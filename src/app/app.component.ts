@@ -15,21 +15,17 @@ import { RouterModule } from '@angular/router';
   `,
   styles: [`
     .app-container {
-      height: 100vh;
-      overflow: hidden;
+      min-height: 100vh;
       position: relative;
 
-      &:has(app-project-filesystem) {
-        height: auto;
-        min-height: 100vh;
-        overflow-y: auto;
-        overflow-x: hidden;
-      }
+      &:not(:has(app-project-filesystem)) {
+        height: 100vh;
+        overflow: hidden;
 
-      @media (max-width: 768px) {
-        height: auto;
-        min-height: 100vh;
-        overflow-y: auto;
+        @media (max-width: 768px) {
+          height: auto;
+          overflow-y: auto;
+        }
       }
     }
   `]

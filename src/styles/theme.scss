@@ -24,15 +24,10 @@ body {
   font-family: $font-system;
   background: $bg-main;
   color: $text-main;
-  overflow: hidden;
-  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
   position: relative;
-
-  @media (max-width: 768px) {
-    overflow-y: auto;
-    height: auto;
-    min-height: 100vh;
-  }
 
   // Efecto de scanlines sutil en todo el sitio
   &::before {
