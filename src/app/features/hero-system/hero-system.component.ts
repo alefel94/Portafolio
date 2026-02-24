@@ -40,11 +40,14 @@ export class HeroSystemComponent implements OnInit {
     { name: 'Git', color: 'purple' as const },
     { name: 'GitHub', color: 'purple' as const },
     { name: 'Figma', color: 'pink' as const },
-    { name: 'SCRUM', color: 'green' as const }
+    { name: 'SCRUM', color: 'green' as const },
+    { name: 'Claude AI', color: 'blue' as const },
+    { name: 'ChatGPT', color: 'green' as const },
+    { name: 'GitHub Copilot', color: 'purple' as const }
   ];
 
   // Descripción con efecto de typing
-  description = 'Desarrollador web enfocado en frontend y backend, con experiencia en e-commerce, React, Angular Php, Java y SpringBoot. Trabajo ágil con SCRUM, Git y bases de datos, destacando por adaptabilidad y resolución de problemas.';
+  description = 'Desarrollador orientado a resultados, apasionado por la programación y la resolución de problemas, con experiencia en desarrollo frontend y backend. Destaco por mi adaptabilidad y sólida comprensión tanto de interfaces de usuario como de lógica de servidor. Comprometido con el aprendizaje continuo y preparado para asumir nuevos retos, busco integrarme a un entorno dinámico donde pueda contribuir activamente al crecimiento de proyectos innovadores, mientras impulso mi desarrollo profesional.';
   typedDescription = '';
   typingIndex = 0;
 

@@ -497,6 +497,39 @@
     background: $neon-purple;
     box-shadow: 0 0 10px $neon-purple;
   }
+
+  &.profile {
+    background: $neon-green;
+    box-shadow: 0 0 15px $neon-green, 0 0 30px rgba($neon-green, 0.4);
+    animation: pulse 2s infinite;
+  }
+}
+
+.profile-entry {
+  background: rgba($neon-green, 0.03);
+  border-left: 3px solid rgba($neon-green, 0.5);
+  padding-left: 1rem;
+  margin-left: -1rem;
+  margin-bottom: 2.5rem !important;
+
+  .log-timestamp {
+    color: $neon-green;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+
+  .log-title {
+    color: $neon-green;
+    text-shadow: 0 0 10px rgba($neon-green, 0.3);
+  }
+
+  .profile-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: lighten($text-dim, 5%);
+    text-align: justify;
+    margin-bottom: 0;
+  }
 }
 
 .log-body {
