@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run build:dev:*)"
+      "Bash(npm run build:dev:*)",
+      "PowerShell(python3.14 \"C:\\\\Users\\\\felip\\\\.claude\\\\skills\\\\ui-ux-pro-max\\\\scripts\\\\search.py\" \"developer portfolio dark cyberpunk professional\" --design-system -p \"FelipeDev Portfolio\" -f markdown 2>&1 | Select-Object -First 150)",
+      "Bash(node -e ' *)",
+      "Bash(npm uninstall *)",
+      "Bash(npx ng *)"
     ]
   }
 }

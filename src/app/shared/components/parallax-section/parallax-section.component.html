@@ -1,0 +1,27 @@
+<div class="parallax-container" #parallaxContainer>
+
+  <!-- Layer 0: Shader WebGL background (slowest) -->
+  <app-shader-animation></app-shader-animation>
+
+  <!-- Layer 1: Vignette overlay (static) -->
+  <div class="shader-overlay"></div>
+
+  <!-- Layer 2: Floating ambient text (medium speed) -->
+  <div class="float-layer">
+    <span class="float-el float-el--1">[ SYS ]</span>
+    <span class="float-el float-el--2">&#123; 0x00 &#125;</span>
+    <span class="float-el float-el--3">// EOF</span>
+  </div>
+
+  <!-- Layer 3: Main content (fastest + fades out) -->
+  <div class="parallax-content">
+    <span class="parallax-prefix">$ ssh dev.mx --user=felipemejia</span>
+    <h2 class="parallax-title">FELIPE<span class="accent">.DEV</span></h2>
+    <p class="parallax-subtitle">Full Stack Developer &nbsp;·&nbsp; Guadalajara, MX</p>
+    <button class="cta-btn" (click)="scrollToHero()">
+      <span class="cta-text">VER_DESARROLLADOR</span>
+      <span class="cta-arrow">↓</span>
+    </button>
+  </div>
+
+</div>

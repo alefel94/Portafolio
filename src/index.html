@@ -2,16 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Full Stack Developer</title>
+  <title>Felipe Mejía | Full Stack Developer</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Full-stack architect specializing in high-end frontend interfaces and robust Node.js environments">
+  <meta name="description" content="Felipe Mejía — Full Stack Developer especializado en Angular, React, Spring Boot y PHP. Disponible en Guadalajara, MX.">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-  <!-- Fuentes: Fira Code para estilo terminal -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 </head>
 <body>
   <app-root></app-root>
@@ -62,17 +61,12 @@
   </style>
 
   <script>
-    // Ocultar loading screen después de que Angular se cargue
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('🔍 DOM cargado, esperando a Angular...');
-
       const appRoot = document.querySelector('app-root');
       const loadingScreen = document.getElementById('loading-screen');
 
-      // Verificar cada 100ms si Angular ha renderizado
       const checkInterval = setInterval(() => {
         if (appRoot && appRoot.children.length > 0) {
-          console.log(' Angular renderizado, ocultando loading screen');
           loadingScreen.style.animation = 'fadeOut 0.5s ease-out forwards';
           setTimeout(() => {
             loadingScreen.style.display = 'none';
@@ -81,9 +75,7 @@
         }
       }, 100);
 
-      // Timeout de seguridad: ocultar después de 5 segundos de todos modos
       setTimeout(() => {
-        console.log(' Timeout: ocultando loading screen forzadamente');
         loadingScreen.style.display = 'none';
         clearInterval(checkInterval);
       }, 5000);

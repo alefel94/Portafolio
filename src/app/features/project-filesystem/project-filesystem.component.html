@@ -1,376 +1,64 @@
-<div class="project-filesystem">
-  <div class="container-cyber">
-    <!-- Header Terminal -->
-    <div class="terminal-header">
-      <span class="path">C:\USUARIOS\FELIPE_MEJÍA\FULLSTACK > </span>
-      <span class="command">MOSTRAR_EXPERIENCIA_PROFESIONAL</span>
+<div class="pf-wrap">
+
+  <header class="pf-topbar">
+    <div class="pf-topbar-left">
+      <button class="pf-back" (click)="goBack()">← volver</button>
+      <span class="pf-path"><button class="pf-home-link" (click)="goBack()"><span class="pf-accent">~/felipe-mejia</span></button> % ls proyectos/ → {{ projects.length }} resultados</span>
     </div>
+  </header>
+  <div class="pf-divider"></div>
 
-    <!-- Main Grid Layout -->
-    <div class="main-grid">
-
-      <!-- ========== LEFT COLUMN ========== -->
-      <aside class="sidebar-left">
-
-        <!-- User Identity Card -->
-        <div class="panel identity-card">
-          <div class="panel-header">
-            <span class="panel-title">USER_IDENTITY.VSH</span>
-            <div class="panel-dots">
-              <span></span>
-              <span></span>
-            </div>
-          </div>
-
-          <div class="identity-content">
-            <div class="avatar-container">
-              <img src="assets/images/fotoPerfil.jpg" alt="Felipe Alejandro Mejía Vázquez" class="avatar-image">
-            </div>
-
-            <div class="identity-info">
-              <div class="info-line">
-                <span class="label">NOMBRE</span>
-              </div>
-              <div class="value">FELIPE_ALEJANDRO_MEJÍA_VÁZQUEZ</div>
-
-              <div class="info-line">
-                <span class="label">POSITION</span>
-              </div>
-              <div class="value highlight">FULL_STACK_DEVELOPER</div>
-
-              <div class="info-line">
-                <span class="label">LOCATION</span>
-              </div>
-              <div class="value">ZAPOPAN_JALISCO_MX</div>
-
-              <div class="info-line">
-                <span class="label">AVAILABILITY</span>
-              </div>
-              <div class="value availability">[ DISPONIBLE ]</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Download CV Button -->
-        <button class="cv-download-btn" (click)="onDownloadCV()">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <polyline points="7 10 12 15 17 10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <line x1="12" y1="15" x2="12" y2="3" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          DESCARGAR_CV.SYS
-        </button>
-
-        <!-- System Resources -->
-        <div class="panel system-resources">
-          <div class="panel-header">
-            <span class="panel-icon">⚙</span>
-            <span class="panel-title">RECURSOS_DEL_SISTEMA</span>
-          </div>
-
-          <div class="resources-content">
-            <div class="resource-item">
-              <div class="resource-label">
-                <span>FRONTEND_CORE (REACT/VUE)</span>
-                <span class="percentage">94%</span>
-              </div>
-              <div class="progress-bar">
-                <div class="progress-fill blue" [style.width.%]="94"></div>
-              </div>
-            </div>
-
-            <div class="resource-item">
-              <div class="resource-label">
-                <span>BACKEND_THREAD (NODE/PHP)</span>
-                <span class="percentage">82%</span>
-              </div>
-              <div class="progress-bar">
-                <div class="progress-fill purple" [style.width.%]="82"></div>
-              </div>
-            </div>
-
-            <div class="resource-item">
-              <div class="resource-label">
-                <span>DATABASE_BUFFER (SQL/NOSQL)</span>
-                <span class="percentage">76%</span>
-              </div>
-              <div class="progress-bar">
-                <div class="progress-fill green" [style.width.%]="76"></div>
-              </div>
-            </div>
-
-            <div class="system-stats">
-              <div class="stat">
-                <span class="stat-label">LATENCY:</span>
-                <span class="stat-value green">12MS</span>
-              </div>
-              <div class="stat">
-                <span class="stat-label">PORT:</span>
-                <span class="stat-value">443</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </aside>
-
-      <!-- ========== CENTER COLUMN ========== -->
-      <main class="main-content">
-        <div class="panel log-panel">
-          <div class="panel-header">
-            <span class="panel-icon"></span>
-            <span class="panel-title">LOG_DE_SISTEMA.LOG</span>
-            <div class="panel-filters">
-              <span class="filter-text">FILTER: ALL_ENTRIES</span>
-              <span class="filter-encoding">UTF-8</span>
-            </div>
-          </div>
-
-          <div class="log-content">
-            <!-- Experience Entry 1 -->
-            <div class="log-entry">
-              <div class="log-indicator active"></div>
-              <div class="log-body">
-                <div class="log-timestamp">TIMESTAMP: AGOSTO 2024 - PRESENTE</div>
-                <h3 class="log-title">DESARROLLADOR WEB</h3>
-                <div class="log-company">&#64; COMISARÍA_DE_ZAPOPAN</div>
-                <ul class="log-list">
-                  <li>Desarrollo de soluciones web en un entorno ágil bajo metodología SCRUM, colaborando con equipos multidisciplinarios.</li>
-                  <li>Participación en proyectos reales con enfoque full stack, contribuyendo tanto en frontend como en backend.</li>
-                  <li>Implementación de funcionalidades utilizando PHP, React, Angular y MySQL.</li>
-                  <li>Uso de Git y GitHub para control de versiones, trabajo colaborativo y mantenimiento de la calidad del código.</li>
-                  <li>Integración y consumo de APIs REST para la comunicación entre frontend y backend.</li>
-                  <li>Administración básica de entornos web mediante cPanel, incluyendo gestión de archivos, bases de datos y configuraciones del servidor.</li>
-                  <li>Uso básico de Docker para la gestión de entornos de desarrollo.</li>
-                  <li>Resolución de problemas, optimización de funcionalidades y adaptación continua a nuevas tecnologías y buenas prácticas.</li>
-                </ul>
-                <div class="tech-tags">
-                  <span class="tech-tag">PHP</span>
-                  <span class="tech-tag">REACT</span>
-                  <span class="tech-tag">ANGULAR</span>
-                  <span class="tech-tag">MYSQL</span>
-                  <span class="tech-tag">GIT</span>
-                  <span class="tech-tag">GITHUB</span>
-                  <span class="tech-tag">DOCKER</span>
-                  <span class="tech-tag">CPANEL</span>
-                  <span class="tech-tag">APIS REST</span>
-                  <span class="tech-tag">SCRUM</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Experience Entry 2 -->
-            <div class="log-entry">
-              <div class="log-indicator"></div>
-              <div class="log-body">
-                <div class="log-timestamp">TIMESTAMP: JULIO - SEPTIEMBRE 2024</div>
-                <h3 class="log-title">FULL STACK DEVELOPER</h3>
-                <div class="log-company">
-                  &#64; SAFE_DOG_E-COMMERCE
-                  <a href="https://elcaballodelatierra.github.io/SafeDog/index.html" target="_blank" class="project-link" title="Ver proyecto">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                      <polyline points="15 3 21 3 21 9"></polyline>
-                      <line x1="10" y1="14" x2="21" y2="3"></line>
-                    </svg>
-                  </a>
-                </div>
-                <ul class="log-list">
-                  <li>Contribuí al desarrollo de un e-commerce especializado en el cuidado de mascotas, integrando y optimizando funcionalidades tanto en Frontend como en Backend.</li>
-                  <li>Implementé un diseño responsivo utilizando Bootstrap, desarrollé prototipos y maquetado en Figma, y aseguré una experiencia de usuario intuitiva y moderna.</li>
-                  <li>Desarrollé componentes y lógica de negocio con JavaScript, HTML5, CSS3, y JAVA; además, integré bases de datos relacionales con MySQL.</li>
-                  <li>Implementé e integré APIs RESTful, gestionando peticiones HTTP, manejo de datos y conexión entre frontend y backend.</li>
-                  <li>Gestioné la colaboración y control de versiones del equipo a través de Git y GitHub.</li>
-                  <li>Asumí el rol de Scrum Master, organizando el tiempo y resolviendo problemas mediante Jira, siguiendo la metodología ágil SCRUM para asegurar la entrega continua de valor.</li>
-                  <li>Coordiné la integración y despliegue de nuevas funcionalidades, promoviendo buenas prácticas de desarrollo y trabajo colaborativo.</li>
-                </ul>
-                <div class="tech-tags">
-                  <span class="tech-tag">JAVASCRIPT</span>
-                  <span class="tech-tag">HTML5</span>
-                  <span class="tech-tag">CSS3</span>
-                  <span class="tech-tag">JAVA</span>
-                  <span class="tech-tag">MYSQL</span>
-                  <span class="tech-tag">BOOTSTRAP</span>
-                  <span class="tech-tag">FIGMA</span>
-                  <span class="tech-tag">APIS REST</span>
-                  <span class="tech-tag">GIT</span>
-                  <span class="tech-tag">GITHUB</span>
-                  <span class="tech-tag">JIRA</span>
-                  <span class="tech-tag">SCRUM</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Experience Entry 3 -->
-            <div class="log-entry">
-              <div class="log-indicator"></div>
-              <div class="log-body">
-                <div class="log-timestamp">TIMESTAMP: 2021 - AGOSTO 2024</div>
-                <h3 class="log-title">PILOTO DE DRONES</h3>
-                <div class="log-company">&#64; COMISARÍA_DE_ZAPOPAN</div>
-                <ul class="log-list">
-                  <li>Generación y análisis de estadísticas sobre trayectorias de vuelo de drones, contribuyendo a la toma de decisiones basadas en datos.</li>
-                  <li>Desarrollo de habilidades técnicas para la resolución de problemas y análisis de datos utilizando herramientas tecnológicas y plataformas especializadas.</li>
-                  <li>Coordinación y organización efectiva del trabajo en equipo, asegurando el cumplimiento de objetivos y operaciones seguras.</li>
-                </ul>
-                <div class="tech-tags">
-                  <span class="tech-tag">ANÁLISIS DE DATOS</span>
-                  <span class="tech-tag">COORDINACIÓN</span>
-                  <span class="tech-tag">TRABAJO EN EQUIPO</span>
-                  <span class="tech-tag">RESOLUCIÓN DE PROBLEMAS</span>
-                  <span class="tech-tag">OPERACIONES SEGURAS</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Education Entry 1 -->
-            <div class="log-entry">
-              <div class="log-indicator education"></div>
-              <div class="log-body">
-                <div class="log-timestamp">TIMESTAMP: MAYO - SEPTIEMBRE 2024</div>
-                <h3 class="log-title">DESARROLLADOR JAVA FULL STACK</h3>
-                <div class="log-company">&#64; GENERATION_MÉXICO</div>
-                <p class="log-description">
-                  Programa intensivo de formación en desarrollo Full Stack con Java, cubriendo
-                  tecnologías frontend y backend, bases de datos, APIs REST, y metodologías ágiles.
-                </p>
-                <div class="tech-tags">
-                  <span class="tech-tag">JAVA</span>
-                  <span class="tech-tag">SPRING BOOT</span>
-                  <span class="tech-tag">REACT</span>
-                  <span class="tech-tag">MYSQL</span>
-                  <span class="tech-tag">APIS REST</span>
-                  <span class="tech-tag">METODOLOGÍAS ÁGILES</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Education Entry 2 -->
-            <div class="log-entry">
-              <div class="log-indicator education"></div>
-              <div class="log-body">
-                <div class="log-timestamp">TIMESTAMP: 2014 - 2017</div>
-                <h3 class="log-title">LICENCIATURA EN GASTRONOMÍA</h3>
-                <div class="log-company">&#64; UNIVERSIDAD_TECNOLÓGICA_DE_GUADALAJARA_UTEG</div>
-              </div>
-            </div>
-
-            <!-- Certifications Section -->
-            <div class="log-entry">
-              <div class="log-indicator education"></div>
-              <div class="log-body">
-                <div class="log-timestamp">CERTIFICATIONS</div>
-                <h3 class="log-title">CERTIFICACIONES PROFESIONALES</h3>
-                <div class="tech-tags">
-                  <span class="tech-tag">INMERSIÓN IA + GOOGLE GEMINI</span>
-                  <span class="tech-tag">PHP AVANZADO</span>
-                  <span class="tech-tag">SCRUM FUNDAMENTALS CERTIFIED</span>
-                  <span class="tech-tag">DESARROLLO CON IA</span>
-                  <span class="tech-tag">ANÁLISIS DE NEGOCIO</span>
-                  <span class="tech-tag">VUE.JS ESENCIAL</span>
-                  <span class="tech-tag">CHATBOT WHATSAPP</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-
-      <!-- ========== RIGHT COLUMN ========== -->
-      <aside class="sidebar-right">
-
-        <!-- System Status -->
-        <div class="status-header">
-          <div class="status-title">SYSTEM_STATUS</div>
-          <div class="status-indicator">
-            <span class="status-dot online"></span>
-            <span class="status-text">ONLINE</span>
-            <span class="status-separator">//</span>
-            <span class="status-text">SECURE_CONNECTION</span>
-          </div>
-        </div>
-
-        <!-- Network Status -->
-        <div class="panel network-panel">
-          <div class="panel-header">
-            <span class="panel-icon">🌐</span>
-            <span class="panel-title">NETWORK_STATUS</span>
-          </div>
-
-          <div class="network-content">
-            <div class="network-item">
-              <span class="network-label">EMAIL</span>
-              <a href="mailto:felipemejiavazquez@gmail.com" class="network-value network-link">felipemejiavazquez&#64;gmail.com</a>
-            </div>
-            <div class="network-item">
-              <span class="network-label">PHONE</span>
-              <a href="https://wa.me/523317105884" target="_blank" class="network-value network-link">+52_3317105884</a>
-            </div>
-            <div class="network-item">
-              <span class="network-label">GITHUB</span>
-              <a href="https://github.com/alefel94" target="_blank" class="network-value network-link">alefel94</a>
-            </div>
-            <div class="network-item">
-              <span class="network-label">LINKEDIN</span>
-              <a href="https://www.linkedin.com/in/mejiavazquez/" target="_blank" class="network-value network-link">mejiavazquez</a>
-            </div>
-
-            <div class="security-scan">
-              <span class="scan-label">SECURITY_SCAN</span>
-              <div class="scan-bars">
-                <div class="scan-bar active"></div>
-                <div class="scan-bar active"></div>
-                <div class="scan-bar active"></div>
-                <div class="scan-bar active"></div>
-                <div class="scan-bar"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Packages Installed -->
-        <div class="panel packages-panel">
-          <div class="panel-header">
-            <span class="panel-icon">📦</span>
-            <span class="panel-title">PACKAGES_INSTALLED</span>
-          </div>
-
-          <div class="packages-grid">
-            <span class="package-badge">HTML</span>
-            <span class="package-badge">CSS</span>
-            <span class="package-badge">JAVASCRIPT</span>
-            <span class="package-badge">PHP</span>
-            <span class="package-badge">JAVA</span>
-            <span class="package-badge">MYSQL</span>
-            <span class="package-badge">ANGULAR</span>
-            <span class="package-badge">REACT</span>
-            <span class="package-badge">BOOTSTRAP</span>
-            <span class="package-badge">SPRING_BOOT</span>
-            <span class="package-badge">DOCKER</span>
-            <span class="package-badge">GIT</span>
-            <span class="package-badge">FIGMA</span>
-            <span class="package-badge">POSTMAN</span>
-            <span class="package-badge">SCRUM</span>
-          </div>
-        </div>
-
-        <!-- Contact CTA -->
-        <div class="contact-section">
-          <div class="contact-label">¿LISTO_PARA_NUEVOS_PROYECTOS?</div>
-          <button class="contact-btn" (click)="onContactClick()">EJECUTAR_CONTACTO.BAT</button>
-        </div>
-      </aside>
-    </div>
-
-    <!-- Footer -->
-    <footer class="terminal-footer">
-      <div class="footer-left">
-        <span>© 2024 FELIPE_MEJÍA_PORTFOLIO // FULL_STACK_DEVELOPER // BUILD: 1.0.0</span>
-      </div>
-      <div class="footer-right">
-        <a href="https://github.com/alefel94" target="_blank" class="footer-link">GITHUB</a>
-        <a href="https://www.linkedin.com/in/mejiavazquez/" target="_blank" class="footer-link">LINKEDIN</a>
-        <a href="mailto:felipemejiavazquez@gmail.com" class="footer-link">EMAIL</a>
-      </div>
-    </footer>
+  <div class="pf-header">
+    <span class="pf-label">// proyectos seleccionados</span>
+    <h1 class="pf-title">Proyectos</h1>
   </div>
+
+  <div class="pf-grid">
+    <div class="pf-card" *ngFor="let project of projects; let i = index">
+      <div class="pf-card-img">
+        <ng-container *ngIf="project.images.length > 0; else noImg">
+          <img [src]="project.images[activeIndex[i]]" [alt]="project.title" class="pf-img">
+          <div class="pf-carousel-controls" *ngIf="project.images.length > 1">
+            <button class="pf-carr-btn" (click)="prev(i)">‹</button>
+            <span class="pf-carr-dots">
+              <span *ngFor="let img of project.images; let d = index"
+                    class="pf-dot" [class.active]="d === activeIndex[i]"></span>
+            </span>
+            <button class="pf-carr-btn" (click)="next(i)">›</button>
+          </div>
+        </ng-container>
+        <ng-template #noImg>
+          <div class="pf-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span class="pf-ph-text">Sin imagen del proyecto</span>
+          </div>
+        </ng-template>
+      </div>
+      <div class="pf-card-body">
+        <span class="pf-card-num">{{ project.num }}</span>
+        <h2 class="pf-card-title">{{ project.title }}</h2>
+        <p class="pf-card-desc">{{ project.desc }}</p>
+        <div class="pf-card-tags" *ngIf="project.tags.length > 0">
+          <span class="pf-tag" *ngFor="let tag of project.tags">{{ tag }}</span>
+        </div>
+        <div class="pf-tag-groups" *ngIf="project.tagGroups && project.tagGroups.length > 0">
+          <div class="pf-tag-group" *ngFor="let group of project.tagGroups">
+            <span class="pf-group-label">{{ group.label }}</span>
+            <div class="pf-group-tags">
+              <span class="pf-tag" *ngFor="let tag of group.tags">{{ tag }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="pf-card-actions" *ngIf="project.link || project.repo">
+          <a *ngIf="project.link" [href]="project.link" target="_blank" class="pf-action-link">Ver proyecto ↗</a>
+          <a *ngIf="project.repo" [href]="project.repo" target="_blank" class="pf-action-repo">○ GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

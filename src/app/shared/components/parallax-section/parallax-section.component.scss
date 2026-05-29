@@ -1,0 +1,148 @@
+@import '../../../../styles/variables';
+
+.parallax-container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+}
+
+.shader-overlay {
+  display: none;
+}
+
+// Layer 2: Float elements wrapper — moves at medium parallax speed
+.float-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.float-el {
+  position: absolute;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  pointer-events: none;
+
+  &--1 {
+    top: 22%;
+    left: 8%;
+    color: rgba($neon-green, 0.4);
+  }
+
+  &--2 {
+    top: 28%;
+    right: 12%;
+    color: rgba($neon-blue, 0.4);
+  }
+
+  &--3 {
+    bottom: 28%;
+    left: 18%;
+    color: rgba($neon-purple, 0.4);
+  }
+}
+
+// Layer 3: Main content — moves fastest and fades out on scroll
+.parallax-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  pointer-events: none;
+  will-change: transform, opacity;
+
+  .cta-btn {
+    pointer-events: auto;
+  }
+}
+
+.parallax-prefix {
+  font-family: $font-mono;
+  font-size: 0.875rem;
+  color: $neon-green;
+  letter-spacing: 0.08em;
+  opacity: 0.9;
+}
+
+.parallax-title {
+  font-family: $font-heading;
+  font-size: clamp(3rem, 10vw, 7rem);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: $text-main;
+  text-shadow: 0 0 15px rgba($neon-blue, 0.7), 0 0 40px rgba($neon-blue, 0.3);
+  margin: 0;
+
+  .accent {
+    color: $neon-blue;
+  }
+}
+
+.parallax-subtitle {
+  font-family: $font-mono;
+  font-size: 1rem;
+  color: $text-dim;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.cta-btn {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.75rem;
+  background: transparent;
+  border: 1px solid rgba($neon-blue, 0.5);
+  color: $text-main;
+  font-family: $font-mono;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.25s, box-shadow 0.25s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba($neon-blue, 0.06);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  &:hover {
+    border-color: $neon-blue;
+    box-shadow: 0 0 18px rgba($neon-blue, 0.3);
+
+    &::before { opacity: 1; }
+
+    .cta-arrow { transform: translateY(4px); }
+  }
+}
+
+.cta-text {
+  color: $text-main;
+}
+
+.cta-arrow {
+  color: $neon-blue;
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+  animation: arrow-bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes arrow-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}

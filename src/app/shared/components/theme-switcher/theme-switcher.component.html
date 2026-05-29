@@ -1,0 +1,13 @@
+<div class="switcher-host">
+  <!-- String going up from the orb, clipped by overflow:hidden on host -->
+  <div class="pull-cord"></div>
+
+  <!-- Draggable orb -->
+  <div #orb class="orb" [class.orb--light]="!isDark"
+       (pointerdown)="onPointerDown($event)">
+    <span class="orb-ring"></span>
+  </div>
+
+  <!-- Label below -->
+  <span class="orb-label">{{ isDark ? 'LIGHT' : 'DARK' }} ↓</span>
+</div>

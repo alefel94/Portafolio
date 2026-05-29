@@ -11,16 +11,24 @@ const mimeTypes = {
   '.css': 'text/css',
   '.json': 'application/json',
   '.png': 'image/png',
-  '.jpg': 'image/jpg',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
   '.gif': 'image/gif',
   '.svg': 'image/svg+xml',
-  '.ico': 'image/x-icon'
+  '.ico': 'image/x-icon',
+  '.pdf': 'application/pdf',
+  '.woff': 'font/woff',
+  '.woff2': 'font/woff2',
+  '.ttf': 'font/ttf'
 };
 
-const server = http.createServer((req, res) => {
-  console.log(`${req.method} ${req.url}`);
+const url = require('url');
 
-  let filePath = path.join(DIST_DIR, req.url === '/' ? 'index.html' : req.url);
+const server = http.createServer((req, res) => {
+  const parsedUrl = url.parse(req.url);
+  const pathname = parsedUrl.pathname === '/' ? 'index.html' : parsedUrl.pathname;
+
+  let filePath = path.join(DIST_DIR, pathname);
 
   const extname = String(path.extname(filePath)).toLowerCase();
   const contentType = mimeTypes[extname] || 'application/octet-stream';
@@ -39,7 +47,7 @@ const server = http.createServer((req, res) => {
       }
     } else {
       res.writeHead(200, { 'Content-Type': contentType });
-      res.end(content, 'utf-8');
+      res.end(content);
     }
   });
 });

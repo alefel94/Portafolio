@@ -9,6 +9,50 @@
 @tailwind components;
 @tailwind utilities;
 
+// ── CSS Custom Properties (runtime-switchable) ────────────────────────────────
+:root {
+  --bg-main:       #{$bg-main};
+  --bg-panel:      #{$bg-panel};
+  --text-main:     #{$text-main};
+  --text-dim:      #{$text-dim};
+  --text-muted:    #{$text-muted};
+  --neon-blue:     #{$neon-blue};
+  --neon-green:    #{$neon-green};
+  --neon-purple:   #{$neon-purple};
+  --border-panel:  rgba(0, 240, 255, 0.15);
+}
+
+html.light-theme {
+  --bg-main:      #eef2f8;
+  --bg-panel:     rgba(255, 255, 255, 0.82);
+  --text-main:    #0d1b2a;
+  --text-dim:     #3a5068;
+  --text-muted:   #6a7e92;
+  --neon-blue:    #0077cc;
+  --neon-green:   #008855;
+  --neon-purple:  #7c3aed;
+  --border-panel: rgba(0, 119, 204, 0.25);
+
+  body {
+    background: var(--bg-main);
+    color: var(--text-main);
+
+    // Tone down scanlines in light mode
+    &::before { opacity: 0.3; }
+
+    // Remove the purple radial overlay
+    &::after { opacity: 0; }
+  }
+
+  // Scrollbar
+  ::-webkit-scrollbar-track { background: #dde4ee; }
+  ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #0077cc, #7c3aed); }
+
+  // Text selection
+  ::selection          { background: #0077cc; color: #fff; }
+  ::-moz-selection     { background: #0077cc; color: #fff; }
+}
+
 // Reset y configuración base
 * {
   margin: 0;
@@ -22,8 +66,9 @@ html {
 
 body {
   font-family: $font-system;
-  background: $bg-main;
-  color: $text-main;
+  background: var(--bg-main);
+  color: var(--text-main);
+  transition: background 0.4s ease, color 0.4s ease;
   overflow-x: hidden;
   overflow-y: auto;
   min-height: 100vh;

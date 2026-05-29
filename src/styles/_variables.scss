@@ -9,7 +9,7 @@ $bg-panel-solid: #0a0f1e;
 
 // Colores neón
 $neon-blue: #00f0ff;
-$neon-purple: #7a00ff;
+$neon-purple: #a855f7;
 $neon-green: #00ff9c;
 $neon-pink: #ff00e5;
 $neon-orange: #ff6600;
@@ -26,7 +26,8 @@ $glow-green: 0 0 10px $neon-green, 0 0 20px $neon-green, 0 0 30px $neon-green;
 $glow-pink: 0 0 10px $neon-pink, 0 0 20px $neon-pink, 0 0 30px $neon-pink;
 
 // Tipografía
-$font-mono: 'Fira Code', 'Consolas', 'Monaco', monospace;
+$font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', monospace;
+$font-heading: 'Orbitron', 'Fira Code', monospace;
 $font-system: 'Inter', system-ui, sans-serif;
 
 // Grid y espaciado
