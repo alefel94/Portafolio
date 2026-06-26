@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-hero-system',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './hero-system.component.html',
   styleUrls: ['./hero-system.component.scss']
 })

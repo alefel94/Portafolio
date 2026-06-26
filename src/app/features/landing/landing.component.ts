@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ParallaxSectionComponent } from '../../shared/components/parallax-section/parallax-section.component';
+import { ParallaxSectionComponent } from '@shared/components/parallax-section/parallax-section.component';
 
 @Component({
   selector: 'app-landing',

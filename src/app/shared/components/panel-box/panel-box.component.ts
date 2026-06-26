@@ -1,28 +1,32 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-panel-box',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   template: `
     <div
       class="panel-box"
       [class.with-header]="title"
       [class.glowing]="glowing"
-    >
-      <div *ngIf="title" class="panel-header">
-        <h3 class="panel-title">{{ title }}</h3>
-        <span *ngIf="status" class="panel-status" [class.online]="status === 'online'">
-          <span class="status-indicator"></span>
-          {{ status }}
-        </span>
-      </div>
+      >
+      @if (title) {
+        <div class="panel-header">
+          <h3 class="panel-title">{{ title }}</h3>
+          @if (status) {
+            <span class="panel-status" [class.online]="status === 'online'">
+              <span class="status-indicator"></span>
+              {{ status }}
+            </span>
+          }
+        </div>
+      }
       <div class="panel-content">
         <ng-content></ng-content>
       </div>
     </div>
-  `,
+    `,
   styles: [`
     .panel-box {
       position: relative;

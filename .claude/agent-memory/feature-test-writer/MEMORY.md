@@ -1,0 +1,1 @@
+- [Proyecto Portafolio](project_portfolio.md) — Angular 17 standalone, Tailwind, GSAP, SCSS; sin tests configurados; 3 features vacíos (contact, experience, skills)

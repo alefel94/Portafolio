@@ -1,10 +1,16 @@
 import { Routes } from '@angular/router';
-import { LandingComponent } from './features/landing/landing.component';
-import { HeroSystemComponent } from './features/hero-system/hero-system.component';
-import { ProjectFilesystemComponent } from './features/project-filesystem/project-filesystem.component';
 
 export const routes: Routes = [
-  { path: '', component: LandingComponent },
-  { path: 'desarrollador', component: HeroSystemComponent },
-  { path: 'proyectos', component: ProjectFilesystemComponent },
+  {
+    path: '',
+    loadComponent: () => import('./features/landing/landing.component').then(m => m.LandingComponent)
+  },
+  {
+    path: 'desarrollador',
+    loadComponent: () => import('./features/hero-system/hero-system.component').then(m => m.HeroSystemComponent)
+  },
+  {
+    path: 'proyectos',
+    loadComponent: () => import('./features/project-filesystem/project-filesystem.component').then(m => m.ProjectFilesystemComponent)
+  },
 ];

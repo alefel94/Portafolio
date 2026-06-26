@@ -1,5 +1,5 @@
 import { Component, OnDestroy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { Router } from '@angular/router';
 import { ShaderAnimationComponent } from '../shader-animation/shader-animation.component';
 import gsap from 'gsap';
@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 @Component({
   selector: 'app-parallax-section',
   standalone: true,
-  imports: [CommonModule, ShaderAnimationComponent],
+  imports: [ShaderAnimationComponent],
   templateUrl: './parallax-section.component.html',
   styleUrls: ['./parallax-section.component.scss']
 })
@@ -18,6 +18,8 @@ export class ParallaxSectionComponent implements AfterViewInit, OnDestroy {
   @ViewChild('parallaxContainer') parallaxContainer!: ElementRef;
 
   private mm = gsap.matchMedia();
+  private entryTimeline?: gsap.core.Timeline;
+  private ambientFloatTween?: gsap.core.Tween;
 
   constructor(private router: Router) {}
 
@@ -78,6 +80,7 @@ export class ParallaxSectionComponent implements AfterViewInit, OnDestroy {
 
     // Staggered reveal on load — runs once, not scroll-driven
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    this.entryTimeline = tl;
 
     tl.from(el.querySelector('.parallax-prefix'), {
       opacity: 0,
@@ -105,7 +108,7 @@ export class ParallaxSectionComponent implements AfterViewInit, OnDestroy {
     const el = this.parallaxContainer.nativeElement;
 
     // Gentle vertical drift on each float element (runs independently of scroll)
-    gsap.to(el.querySelectorAll('.float-el'), {
+    this.ambientFloatTween = gsap.to(el.querySelectorAll('.float-el'), {
       y: '+=25',
       duration: 2.5,
       yoyo: true,
@@ -120,7 +123,10 @@ export class ParallaxSectionComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    // mm.revert() limpia los tweens/ScrollTriggers creados dentro del matchMedia
     this.mm.revert();
-    ScrollTrigger.getAll().forEach(t => t.kill());
+    // Estos dos no viven dentro del matchMedia, se limpian aparte
+    this.entryTimeline?.kill();
+    this.ambientFloatTween?.kill();
   }
 }

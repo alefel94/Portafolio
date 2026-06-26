@@ -22,10 +22,8 @@ const mimeTypes = {
   '.ttf': 'font/ttf'
 };
 
-const url = require('url');
-
 const server = http.createServer((req, res) => {
-  const parsedUrl = url.parse(req.url);
+  const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
   const pathname = parsedUrl.pathname === '/' ? 'index.html' : parsedUrl.pathname;
 
   let filePath = path.join(DIST_DIR, pathname);
@@ -37,9 +35,14 @@ const server = http.createServer((req, res) => {
     if (error) {
       if (error.code === 'ENOENT') {
         // Si no encuentra el archivo, servir index.html (para rutas de Angular)
-        fs.readFile(path.join(DIST_DIR, 'index.html'), (err, content) => {
+        fs.readFile(path.join(DIST_DIR, 'index.html'), (err, fallbackContent) => {
+          if (err) {
+            res.writeHead(500);
+            res.end(`Server Error: ${err.code}`);
+            return;
+          }
           res.writeHead(200, { 'Content-Type': 'text/html' });
-          res.end(content, 'utf-8');
+          res.end(fallbackContent, 'utf-8');
         });
       } else {
         res.writeHead(500);

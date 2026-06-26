@@ -15,7 +15,9 @@
       <p class="hl-desc">Desarrollador orientado a resultados, apasionado por la programación y la resolución de problemas, con experiencia en desarrollo frontend y backend. Destaco por mi adaptabilidad y sólida comprensión tanto de interfaces de usuario como de lógica de servidor.</p>
 
       <div class="hl-badges">
-        <span *ngFor="let tech of mainSkills" class="hl-badge">{{ tech }}</span>
+        @for (tech of mainSkills; track tech) {
+          <span class="hl-badge">{{ tech }}</span>
+        }
       </div>
 
       <div class="hl-actions">
@@ -42,14 +44,14 @@
           <span class="hl-editor-filename">portfolio.tsx <span class="hl-lang">TSX</span></span>
         </div>
         <pre class="hl-code"><code><span class="hlc-k">const</span> <span class="hlc-v">felipe</span> = &#123;
-  <span class="hlc-p">role</span>: <span class="hlc-s">'Full Stack Engineer'</span>,
-  <span class="hlc-p">location</span>: <span class="hlc-s">'Guadalajara, MX'</span>,
-  <span class="hlc-p">phone</span>: <a class="hlc-s hlc-phone" href="https://wa.me/523317105884" target="_blank">'+52 3317105884'</a>,
-  <span class="hlc-p">status</span>: <span class="hlc-s">'available'</span>,
-&#125;;
+        <span class="hlc-p">role</span>: <span class="hlc-s">'Full Stack Engineer'</span>,
+        <span class="hlc-p">location</span>: <span class="hlc-s">'Guadalajara, MX'</span>,
+        <span class="hlc-p">phone</span>: <a class="hlc-s hlc-phone" href="https://wa.me/523317105884" target="_blank">'+52 3317105884'</a>,
+        <span class="hlc-p">status</span>: <span class="hlc-s">'available'</span>,
+        &#125;;
 
-<span class="hlc-c">// shipping clean UI + solid backends</span>
-<span class="hlc-k">export default</span> <span class="hlc-fn">build</span>(felipe);<span class="hlc-cursor"> </span></code></pre>
+        <span class="hlc-c">// shipping clean UI + solid backends</span>
+        <span class="hlc-k">export default</span> <span class="hlc-fn">build</span>(felipe);<span class="hlc-cursor"> </span></code></pre>
       </div>
 
       <!-- Git log panel -->

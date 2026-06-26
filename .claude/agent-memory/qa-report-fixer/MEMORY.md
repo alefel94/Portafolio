@@ -1,0 +1,3 @@
+- [Stack y arquitectura del portafolio](project_stack.md) — Angular 17 standalone, desfase mock-data vs datos reales hardcodeados
+- [Regla CLAUDE.md sobre console.log](feedback_no_console_log.md) — solo logs de error/debugging real, no logs informativos
+- [Hallazgos que requieren decisión de producto](feedback_decisiones_producto.md) — componentes shared sin conectar, servicios con mock vs datos reales, Tailwind casi sin uso

@@ -1,10 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-neon-button',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   template: `
     <button
       class="neon-button"
@@ -13,22 +13,23 @@ import { CommonModule } from '@angular/common';
       [class.outline]="variant === 'outline'"
       [disabled]="disabled"
       (click)="handleClick($event)"
-    >
+      >
       <span class="button-content">
         {{ text }}
-        <svg
-          *ngIf="showArrow"
-          class="arrow"
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-          fill="none"
-        >
-          <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        @if (showArrow) {
+          <svg
+            class="arrow"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            >
+            <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        }
       </span>
     </button>
-  `,
+    `,
   styles: [`
     .neon-button {
       position: relative;

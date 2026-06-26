@@ -11,7 +11,6 @@ bootstrapApplication(AppComponent, {
     provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'top' }))
   ]
 })
-.then(() => console.log('✅ Bootstrap completado exitosamente'))
 .catch(err => {
   console.error('❌ Error en bootstrap:', err);
   console.error('Stack trace:', err.stack);

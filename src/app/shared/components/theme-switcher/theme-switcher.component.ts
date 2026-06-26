@@ -1,10 +1,10 @@
 import { Component, ElementRef, ViewChild, OnInit, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-theme-switcher',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './theme-switcher.component.html',
   styleUrls: ['./theme-switcher.component.scss']
 })
